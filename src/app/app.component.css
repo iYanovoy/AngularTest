@@ -46,7 +46,7 @@ nav{
   display: block;
 }
 
-app-user{
+app-user, app-messages{
   display: block;
   padding: 20px 40px;
 }
