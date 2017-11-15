@@ -1,0 +1,15 @@
+.users{
+  margin-bottom: 40px;
+}
+
+.user{
+  margin-bottom: 30px;
+}
+
+.user__header{
+  margin: 10px 40px;
+}
+
+.user__id, .user__name{
+  margin: 10px 40px;
+}
