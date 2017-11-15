@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { UserService } from "./user.service";
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './messages/message.service';
 
 
 @NgModule({
@@ -14,13 +17,14 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     AppComponent,
     UserComponent,
     AuthorizationComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [UserService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

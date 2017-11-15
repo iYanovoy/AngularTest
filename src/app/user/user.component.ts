@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { User } from "./user";
 import { USERS } from "./mock-users";
+import { UserService } from "../user.service";
 
 @Component({
   selector: 'app-user',
@@ -12,16 +13,20 @@ import { USERS } from "./mock-users";
 export class UserComponent implements OnInit {
 
   selectedUser: User;
-  users = USERS;
+  users: User[];
 
   onSelect(user: User): void {
     this.selectedUser = user;
   }
 
-  constructor() { }
+  getUsers(): void {
+    this.userService.getUsers().subscribe(users => this.users = users);
+  }
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-
+    this.getUsers()
   }
 
 }

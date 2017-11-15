@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Observable } from "rxjs/Observable";
+import { of } from "rxjs/observable/of";
 
 import { User } from "./user/user";
 import { USERS } from "./user/mock-users";
+import { MessageService } from "./messages/message.service";
 
 @Injectable()
 export class UserService {
 
-  getUsers(): User[] {
-    return USERS;
+  getUsers(): Observable<User[]> {
+    this.messageService.add('HeroService: fetched heroes');
+    return of(USERS);
   }
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
 }
