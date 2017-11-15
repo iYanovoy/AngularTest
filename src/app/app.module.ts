@@ -10,6 +10,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserService } from "./user.service";
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './messages/message.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { MessageService } from './messages/message.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [UserService, MessageService],
   bootstrap: [AppComponent]
