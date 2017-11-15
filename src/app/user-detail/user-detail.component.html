@@ -1,3 +1,9 @@
-<p>
-  user-detail works!
-</p>
+<div *ngIf="user" class="user">
+  <h2 class="user__header" >{{ user.firstName | uppercase }} Details</h2>
+  <div class="user__id"><span class="user__id--label">id: </span>{{user.id}}</div>
+  <div>
+    <label class="user__name">name:
+      <input [(ngModel)]="user.firstName" placeholder="name">
+    </label>
+  </div>
+</div>

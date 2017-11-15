@@ -5,12 +5,6 @@
     <div class="user__id"><span class="user__id--label">Id: </span>{{user.id}}</div>
   </li>
 </ul>
-<div *ngIf="selectedUser" class="user">
-  <h2 class="user__header" >{{ selectedUser.firstName | uppercase }} Details</h2>
-  <div class="user__id"><span class="user__id--label">id: </span>{{selectedUser.id}}</div>
-  <div>
-    <label class="user__name">name:
-      <input [(ngModel)]="selectedUser.firstName" placeholder="name">
-    </label>
-  </div>
-</div>
+<app-user-detail [user]="selectedUser"></app-user-detail>
+
+
