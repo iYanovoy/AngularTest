@@ -7,11 +7,12 @@
   <nav>
     <ul class="navigation">
       <li class="navigation__item"><a class="navigation__item--text">About</a></li>
+      <li class="navigation__item"><a routerLink="/users" class="navigation__item--text">Users</a></li>
       <li class="navigation__item"><a class="navigation__item--text">Sign out</a></li>
     </ul>
   </nav>
 </header>
-<app-user></app-user>
+<router-outlet></router-outlet>
 <app-messages></app-messages>
 <footer>
   <div class="logo">

@@ -11,6 +11,7 @@ import { UserService } from "./user.service";
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './messages/message.service';
 import { AppRoutingModule } from './/app-routing.module';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AppRoutingModule } from './/app-routing.module';
     UserComponent,
     AuthorizationComponent,
     UserDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
