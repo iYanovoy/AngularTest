@@ -9,13 +9,13 @@ app-user{
 }
 
 .user{
-  margin-bottom: 30px;
+  padding: 15px;
 }
 
 .user__header{
   margin: 10px 40px;
 }
 
-.user__id, .user__name{
+.user__id, .user__name, .user__surname, .authorization__header, .authorization__name{
   margin: 10px 40px;
 }

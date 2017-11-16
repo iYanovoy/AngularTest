@@ -1,0 +1,22 @@
+.authorization__header, .authorization__name{
+  margin: 10px 40px;
+}
+
+.authorization__header{
+  font-size: 18px;
+}
+
+.authorization__input{
+  margin-bottom: 30px;
+}
+
+.authorization__button{
+  display: block;
+  margin-left: 40px;
+  padding: 5px 10px;
+  background-color: #4d7aa1;
+  color: white;
+  font-size: 14px;
+  border: 1px solid transparent;
+  border-radius: 15px;
+}

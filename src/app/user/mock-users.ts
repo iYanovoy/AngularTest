@@ -20,5 +20,20 @@ export const USERS: User[] = [
     firstName: "Vasya",
     lastName: "Pupkin",
     id: 5
+  },
+  {
+    firstName: "Stas",
+    lastName: "Michailov",
+    id: 6
+  },
+  {
+    firstName: "iOSif",
+    lastName: "StalIN",
+    id: 7
+  },
+  {
+    firstName: "username",
+    lastName: "usernaymovich",
+    id: 8
   }
 ];

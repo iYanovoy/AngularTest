@@ -1,3 +1,8 @@
-<p>
-  authorization works!
-</p>
+<div class="authorization">
+  <h3 class="authorization__header">Please, enter your name</h3>
+  <label class="authorization__name">Your name:
+    <input [(ngModel)]="this.userName" type="text" class="authorization__input">
+  </label>
+  <span class="authorization__error" *ngIf="!this.authorizationComplete">User not found!</span>
+  <button class="authorization__button" (click)="checkUser(this.userName)">Sign in</button>
+</div>

@@ -1,17 +1,21 @@
 header, footer{
+  height: max-content;
+  width: 100%;
+  padding: 30px 0 3px;
+  margin-bottom: 20px;
+  background-color: #4d7aa1;
+}
+
+.container{
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  height: 200px;
-  padding: 20px 40px;
-  margin-bottom: 20px;
-  background-color: #1c94c4;
+  background-color: white;
 }
 
 .logo{
   display: inline-block;
   width: inherit;
-  background: url("../images/download.png") no-repeat;
+  /*background: url("../images/download.png") no-repeat;*/
 }
 
 .logo__link{
@@ -25,26 +29,39 @@ header, footer{
   height: 100%;
 }
 
+.logo__link--item:hover{
+  background-color: #4d7aa1;
+}
+
 nav{
-  background-color: #9e9e9e;
   height: 75px;
 }
 
 .navigation{
   display: flex;
   height: 100%;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-around;
+  font-weight: 600;
 }
 
 .navigation__item{
-  width: max-content;
+  display: flex;
+  align-items: center;
   padding: 10px 50px;
   flex-shrink: 0;
+  color: #8e8e8e;
+}
+
+.navigation__item:hover {
+  background-color: #4d7aa1;
+  color: white;
 }
 
 .navigation__item--text{
   display: block;
+  font-size: 17px;
+  color: inherit;
 }
 
 app-user, app-messages, app-user-list{
@@ -55,7 +72,33 @@ app-user, app-messages, app-user-list{
 
 
 footer{
-  background-color: #339966;
+  display: flex;
+  align-items: center;
+  background-color: black;
   align-self: flex-end;
   margin-bottom: 0;
+  color: white;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+.footer__header{
+  display: block;
+  margin-bottom: 20px;
+}
+
+.footer__list{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  color: #666;;
+}
+
+.footer__list--item{
+  border-right: 1px solid #666;;
+  padding: 0 10px;
+}
+
+.footer__list--item:last-child{
+  border-right: none;
 }

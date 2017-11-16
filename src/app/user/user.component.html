@@ -2,8 +2,8 @@
   <li class="user" *ngFor="let user of users">
     <a routerLink="/detail/{{user.id}}">
       <h2 class=" user__header">{{ user.firstName | uppercase }} Details</h2>
-      <div class="user__name"><label>Name: </label>{{user.firstName}}</div>
-      <div class="user__id"><span class="user__id--label">Id: </span>{{user.id}}</div>
+      <span class="user__name"><label>Name: </label>{{user.firstName}}</span>
+      <span class="user__id"><span class="user__id--label">Id: </span>{{user.id}}</span>
     </a>
   </li>
 </ul>

@@ -14,10 +14,14 @@ export class UserService {
     return of(USERS);
   }
 
-  getUser(id: number): Observable<User> {
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
+  getUserById(id: number): Observable<User> {
     return of(USERS.find(hero => hero.id === id));
   }
 
+  getUserByName(name: string): Observable<User> {
+    return of(USERS.find(hero => hero.firstName === name));
+  }
+
   constructor(private messageService: MessageService) { }
+
 }

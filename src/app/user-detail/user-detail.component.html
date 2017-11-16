@@ -2,8 +2,11 @@
   <h2 class="user__header" >{{ user.firstName | uppercase }} Details</h2>
   <div class="user__id"><span class="user__id--label">id: </span>{{user.id}}</div>
   <div>
-    <label class="user__name">name:
-      <input [(ngModel)]="user.firstName" placeholder="name">
+    <label class="user__name">Name:
+      <input [(ngModel)]="user.firstName" placeholder="name" class="user__input--name">
+    </label>
+    <label class="user__surname">Surname:
+      <input [(ngModel)]="user.lastName" placeholder="surname" class="user__input--surname">
     </label>
   </div>
 </div>

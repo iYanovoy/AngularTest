@@ -1,30 +1,27 @@
 <header>
-  <div class="logo">
-    <a href="" class="logo__link">
-      <img src="" alt="" class="logo__link--item">
-    </a>
+  <div class="container">
+    <div class="logo">
+      <a routerLink="/users" class="logo__link">
+        <img src="../images/download.png" alt="" class="logo__link--item">
+      </a>
+    </div>
+    <nav>
+      <ul class="navigation">
+        <li class="navigation__item"><a routerLink="/404" class="navigation__item--text">About</a></li>
+        <li class="navigation__item"><a routerLink="/users" class="navigation__item--text">Users</a></li>
+        <li class="navigation__item"><a routerLink="/user-list" class="navigation__item--text">User-list</a></li>
+        <li class="navigation__item"><a routerLink="/" class="navigation__item--text">Sign out</a></li>
+      </ul>
+    </nav>
   </div>
-  <nav>
-    <ul class="navigation">
-      <li class="navigation__item"><a class="navigation__item--text">About</a></li>
-      <li class="navigation__item"><a routerLink="/users" class="navigation__item--text">Users</a></li>
-      <li class="navigation__item"><a routerLink="/user-list" class="navigation__item--text">User-list</a></li>
-      <li class="navigation__item"><a class="navigation__item--text">Sign out</a></li>
-    </ul>
-  </nav>
 </header>
 <router-outlet></router-outlet>
 <!--<app-messages></app-messages>-->
 <footer>
-  <div class="logo">
-    <a href="" class="logo__link">
-      <img src="" alt="" class="logo__link--item">
-    </a>
-  </div>
-  <nav>
-    <ul class="navigation">
-      <li class="navigation__item"><a class="navigation__item--text">About</a></li>
-      <li class="navigation__item"><a class="navigation__item--text">Sign out</a></li>
-    </ul>
-  </nav>
+ <p class="footer__header">Your Online Magazine For All Fun Things To Do In The Monterey Bay Area</p>
+  <ul class="footer__list">
+    <li class="footer__list--item">Copyright © 2015-2017</li>
+    <li class="footer__list--item">Website Design by <a href="#">Ktoto</a></li>
+    <li class="footer__list--item"><a href="#">llia Yanovoy</a></li>
+  </ul>
 </footer>
