@@ -15,9 +15,9 @@ export class UserComponent implements OnInit {
   selectedUser: User;
   users: User[];
 
-  onSelect(user: User): void {
-    this.selectedUser = user;
-  }
+  // onSelect(user: User): void {
+  //   this.selectedUser = user;
+  // }
 
   getUsers(): void {
     this.userService.getUsers().subscribe(users => this.users = users);

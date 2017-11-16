@@ -1,0 +1,10 @@
+<h3 class="user-list--header">Name of Users</h3>
+<div class="user-list">
+  <a *ngFor="let user of users"
+     class="user-list__link"
+     routerLink="/detail/{{user.id}}">
+    <div class="user-list__user">
+      <span class="user-list__user--name">{{user.firstName}}</span>
+    </div>
+  </a>
+</div>

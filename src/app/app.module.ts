@@ -12,6 +12,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './messages/message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UserListComponent } from './user-list/user-list.component';
     AuthorizationComponent,
     UserDetailComponent,
     MessagesComponent,
-    UserListComponent
+    UserListComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
