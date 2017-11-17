@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs/Observable";
-import { of } from "rxjs/observable/of";
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
-import { User } from "./user/user";
-import { USERS } from "./user/mock-users";
-import { MessageService } from "./messages/message.service";
+import { User } from './user/user';
+import { USERS } from './user/mock-users';
 
 @Injectable()
 export class UserService {
 
   getUsers(): Observable<User[]> {
-    this.messageService.add('HeroService: fetched heroes');
     return of(USERS);
   }
 
@@ -22,6 +20,6 @@ export class UserService {
     return of(USERS.find(hero => hero.firstName === name));
   }
 
-  constructor(private messageService: MessageService) { }
+  constructor() { }
 
 }
