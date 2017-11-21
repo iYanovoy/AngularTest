@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -12,8 +11,6 @@ import { UserService } from './user.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-
-
 
 @NgModule({
   declarations: [

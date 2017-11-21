@@ -10,6 +10,7 @@ import { UserService } from '../user.service';
   templateUrl: './authorization.component.html',
   styleUrls: ['./authorization.component.css']
 })
+
 export class AuthorizationComponent implements OnInit {
 
   constructor(private userService: UserService,
@@ -19,23 +20,24 @@ export class AuthorizationComponent implements OnInit {
   }
 
   public authorizationComplete = true;
-  userForm: FormGroup;
+  public userForm: FormGroup;
   user: User;
   @Input()
   userName: string;
 
   createForm() {
     this.userForm = this.fb.group({
-      name: ['', Validators.required]
+      name: ['', [Validators.required, Validators.pattern(/[a-zA-Zа-яА-Я]/)]]
     });
   }
 
   ngOnInit() {
-    this.userService.getUsers();
+    // this.userService.getUsers();
   }
 
   onSubmit(): void {
     this.userName = this.userForm.get('name').value;
+    // console.log(this.userName);
     if (this.userService.getUserByName(this.userName).subscribe(user => this.userName === user.firstName)) {
       this.authorizationComplete === true;
       this.router.navigate(['/users']);
