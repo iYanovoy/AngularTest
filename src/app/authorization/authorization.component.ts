@@ -45,7 +45,6 @@ export class AuthorizationComponent implements OnInit {
       this.authorizationComplete === false;
     }
   }
-
   // checkUser(userName: string): void {
   //   if (this.userService.getUserByName(userName).subscribe(user => this.userName === user.firstName)) {
   //     this.authorizationComplete === true;

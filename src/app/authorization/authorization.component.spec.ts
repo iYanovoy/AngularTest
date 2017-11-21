@@ -9,6 +9,18 @@ import {of} from 'rxjs/observable/of';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {User} from '../user/user';
 
+import {UserListComponent} from '../user-list/user-list.component';
+import {AppComponent} from '../app.component';
+import {AppRoutingModule} from '../app-routing.module';
+import {NotFoundComponent} from '../not-found/not-found.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {APP_BASE_HREF, HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {UserDetailComponent} from '../user-detail/user-detail.component';
+import {UserComponent} from '../user/user.component';
+import {ROUTER_PROVIDERS} from '@angular/router/src/router_module';
+import {RouterTestingModule} from '@angular/router/testing';
+
 
 describe('AuthorizationComponent', () => {
   // const component: AuthorizationComponent;
@@ -30,15 +42,7 @@ describe('AuthorizationComponent', () => {
   const fb = new FormBuilder();
 
   const auth = new AuthorizationComponent(userService, <any>route, fb);
-
-  // beforeEach(async(() => {
-    // data = of({
-    //     name: 'Petro'
-    // });
-  // }));
-
-  // beforeEach(() => {
-  // });
+  let f: ComponentFixture<AuthorizationComponent>;
 
   // Isolated tests
 
@@ -52,7 +56,7 @@ describe('AuthorizationComponent', () => {
     expect(auth.userForm.value.name).toEqual('Username');
   });
 
-  it('valid username', ( ) => {
+  it('valid username', () => {
     auth.userForm.setValue({
       name: 'Stas'
     });
@@ -60,7 +64,7 @@ describe('AuthorizationComponent', () => {
     expect(auth.userForm.status).toEqual('VALID');
   });
 
-  it('invalid username', ( ) => {
+  it('invalid username', () => {
     auth.userForm.setValue({
       name: '12345'
     });
@@ -71,49 +75,97 @@ describe('AuthorizationComponent', () => {
 
   // Shallow tests
 
-  // TestBed.configureTestingModule({
-  //   declarations: [AuthorizationComponent],
-  //   providers: [
-  //     { provide: ActivatedRoute }
-  //   ],
-  //   // Tells the compiler not to error on unknown elements and attributes
-  //   schemas: [NO_ERRORS_SCHEMA]
-  // });
-  // TestBed.compileComponents();
-  //
-  // it('Update username and read status', () => {
-  //   const f = TestBed.createComponent(AuthorizationComponent);
-  //   f.detectChanges();
-  //
-  //   expect(f.debugElement.nativeElement).toContain('Please, enter your name');
-      // .toHaveText('Please, enter your name');
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      // declarations: [AuthorizationComponent],
+      // providers: [
+      //   { provide: ActivatedRoute }
+      // ],
+      // // Tells the compiler not to error on unknown elements and attributes
+      // schemas: [NO_ERRORS_SCHEMA]
+      declarations: [
+        AppComponent,
+        UserComponent,
+        AuthorizationComponent,
+        UserDetailComponent,
+        UserListComponent,
+        NotFoundComponent
+      ],
+      imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        RouterModule,
+        ReactiveFormsModule
+      ],
+      providers: [UserService, {provide: APP_BASE_HREF, useValue: '/'}],
+      schemas: [NO_ERRORS_SCHEMA]
+    });
+    TestBed.compileComponents();
+  }));
 
-    // expect().toEqual();
-  // });
+  it('Update username and read status', () => {
+    f = TestBed.createComponent(AuthorizationComponent);
+    // console.log('first value = ' + f.componentInstance.userForm.value.name);
+    f.detectChanges();
+    f.componentInstance.userForm.value.name = 'Stepan';
 
+    // console.log('last value = ' + f.componentInstance.userForm.value.name);
+
+    expect(f.componentInstance.userForm.value.name)
+      .toEqual('Stepan');
+  });
 
   // Integration Tests
 
-  // beforeEach(async(() => {
-  //   TestBed.configureTestingModule({
-  //     declarations: [AuthorizationComponent],
-  //     // providers: [
-  //     //   { provide: [UserService, ActivatedRoute, FormBuilder] }
-  //     // ],
-  //     imports: [UserService],
-  //     // Tells the compiler not to error on unknown elements and attributes
-  //     schemas: [NO_ERRORS_SCHEMA]
-  //   })
-  //     .compileComponents();
-  // }));
-  //
-  // beforeEach(() => {
-  //   fixture = TestBed.createComponent(AuthorizationComponent);
-  //   component = fixture.componentInstance;
-  //   fixture.detectChanges();
-  // });
-  //
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        AppComponent,
+        UserComponent,
+        AuthorizationComponent,
+        UserDetailComponent,
+        UserListComponent,
+        NotFoundComponent
+      ],
+      imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        RouterTestingModule,
+        ReactiveFormsModule,
+        // Location,
+        LocationStrategy,
+        HashLocationStrategy,
+      ],
+      providers: [UserService, {provide: APP_BASE_HREF, useValue: '/'}, {
+        provide: LocationStrategy,
+        useClass: HashLocationStrategy
+      }],
+      schemas: [NO_ERRORS_SCHEMA]
+    }).compileComponents();
+  }));
+
+  beforeEach(() => {
+    f = TestBed.createComponent(AuthorizationComponent);
+    f.detectChanges();
+    f.componentInstance.userForm.value.name = 'Stas';
+    f.detectChanges();
+    // console.log('last value = ' + f.componentInstance.userForm.value.name);
+    f.detectChanges();
+    // f.componentInstance.userForm.controls.name.status = 'VALID';
+    // f.detectChanges();
+    f.componentInstance.userForm.setValue({'name': 'Stas'});
+    // f.debugElement.nativeElement.children[0][1].submit;
+    // console.log(f.componentInstance.userForm.get('name').value);
+    // console.log(f.componentInstance.userForm.setValue({'name': 'Stas'}));
+    // console.log(f.componentInstance.userForm.controls.name.status);
+  });
+
+  it('submit and route to next page', () => {
+    f.componentInstance.onSubmit();
+    const copy = f.nativeElement.parentNode;
+    console.log(copy);
+    expect(f.componentInstance.userForm.value.name).toEqual('Stas');
+  });
 });
