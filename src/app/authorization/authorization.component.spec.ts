@@ -1,13 +1,10 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {RouterModule, Router, ActivatedRoute} from '@angular/router';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {FormBuilder} from '@angular/forms';
 
 import {AuthorizationComponent} from './authorization.component';
 import {UserService} from '../user.service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
-import {of} from 'rxjs/observable/of';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {User} from '../user/user';
 
 import {UserListComponent} from '../user-list/user-list.component';
 import {AppComponent} from '../app.component';
@@ -18,14 +15,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {APP_BASE_HREF, HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {UserDetailComponent} from '../user-detail/user-detail.component';
 import {UserComponent} from '../user/user.component';
-import {ROUTER_PROVIDERS} from '@angular/router/src/router_module';
 import {RouterTestingModule} from '@angular/router/testing';
 
 
 describe('AuthorizationComponent', () => {
-  // const component: AuthorizationComponent;
-  // const fixture: ComponentFixture<AuthorizationComponent>;
-  // let data: BehaviorSubject<string>;
   const route = {
     snapshot: {
       snapshot: {
@@ -35,19 +28,14 @@ describe('AuthorizationComponent', () => {
       }
     }
   };
-
-  // let component: AuthorizationComponent;
-  // let fixture: ComponentFixture<AuthorizationComponent>;
   const userService = new UserService;
   const fb = new FormBuilder();
-
   const auth = new AuthorizationComponent(userService, <any>route, fb);
   let f: ComponentFixture<AuthorizationComponent>;
 
   // Isolated tests
 
   it('set username', () => {
-    // expect(auth).toBeTruthy();
 
     auth.userForm.setValue({
       name: 'Username'
@@ -77,12 +65,6 @@ describe('AuthorizationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      // declarations: [AuthorizationComponent],
-      // providers: [
-      //   { provide: ActivatedRoute }
-      // ],
-      // // Tells the compiler not to error on unknown elements and attributes
-      // schemas: [NO_ERRORS_SCHEMA]
       declarations: [
         AppComponent,
         UserComponent,
@@ -134,7 +116,6 @@ describe('AuthorizationComponent', () => {
         AppRoutingModule,
         RouterTestingModule,
         ReactiveFormsModule,
-        // Location,
         LocationStrategy,
         HashLocationStrategy,
       ],
@@ -154,18 +135,20 @@ describe('AuthorizationComponent', () => {
     // console.log('last value = ' + f.componentInstance.userForm.value.name);
     f.detectChanges();
     // f.componentInstance.userForm.controls.name.status = 'VALID';
-    // f.detectChanges();
     f.componentInstance.userForm.setValue({'name': 'Stas'});
-    // f.debugElement.nativeElement.children[0][1].submit;
     // console.log(f.componentInstance.userForm.get('name').value);
-    // console.log(f.componentInstance.userForm.setValue({'name': 'Stas'}));
     // console.log(f.componentInstance.userForm.controls.name.status);
   });
 
   it('submit and route to next page', () => {
     f.componentInstance.onSubmit();
     const copy = f.nativeElement.parentNode;
-    console.log(copy);
-    expect(f.componentInstance.userForm.value.name).toEqual('Stas');
+    let ref: string;
+    setTimeout(() => {
+      ref = copy.childNodes[0].baseURI;
+      console.log(ref);
+      expect(ref).toEqual('http://localhost:9876/users');
+    }, 1000);
+    // f.componentInstance.userForm.value.name
   });
 });
